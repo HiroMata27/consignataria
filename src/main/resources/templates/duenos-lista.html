@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dueños</title>
+</head>
+<body>
+<h1>Dueños registrados</h1>
+<a href="/duenos/nuevo">+ Nuevo Dueño</a>
+<br><br>
+<table border="1">
+    <thead>
+    <tr>
+        <th>Cédula</th>
+        <th>Nombres</th>
+        <th>Apellidos</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dueno : ${duenos}">
+        <td th:text="${dueno.cedula}"></td>
+        <td th:text="${dueno.nombres}"></td>
+        <td th:text="${dueno.apellidos}"></td>
+        <td>
+            <a th:href="@{/duenos/eliminar/{cedula}(cedula=${dueno.cedula})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a href="/vehiculos">Ver Vehículos</a>
+</body>
+</html>

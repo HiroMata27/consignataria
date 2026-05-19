@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Nuevo Vehículo</title>
+</head>
+<body>
+<h1>Registrar Vehículo</h1>
+<form action="/vehiculos/guardar" method="post" th:object="${vehiculo}">
+
+  <label>Placa:</label>
+  <input type="text" th:field="*{placa}" required/><br><br>
+
+  <label>Modelo:</label>
+  <input type="text" th:field="*{modelo}" required/><br><br>
+
+  <label>Color:</label>
+  <input type="text" th:field="*{color}" required/><br><br>
+
+  <label>Valor Compra:</label>
+  <input type="number" step="0.01" th:field="*{valorCompra}" required/><br><br>
+
+  <label>Dueño:</label>
+  <select name="duenoCedula" required>
+    <option value="">-- Seleccione --</option>
+    <option th:each="dueno : ${duenos}"
+            th:value="${dueno.cedula}"
+            th:text="${dueno.nombres + ' ' + dueno.apellidos}">
+    </option>
+  </select><br><br>
+
+  <button type="submit">Guardar</button>
+</form>
+<br>
+<a href="/vehiculos">Volver</a>
+</body>
+</html>
